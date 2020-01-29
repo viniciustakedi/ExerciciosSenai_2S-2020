@@ -35,3 +35,10 @@ ALTER TABLE Generos
 ALTER COLUMN Descricao CHAR(100);
 
 --EXCLUIR, PARA EXCLUIR USA "DROP TABLE" para tabelas, "DROP COLUMN" para colunas, "DROP DATABASE "NOME" para o banco de dados.
+
+--INSERIR DADOS NA TABELE
+INSERT INTO Autores (NomeAutor)
+VALUES ('Rosario'), ('Roberta'), ('Paula'), ('Gary'), ('Google');
+
+INSERT INTO Generos (Nome)
+VALUES ('Terro'), ('Romance');
