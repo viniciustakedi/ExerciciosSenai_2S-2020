@@ -74,6 +74,9 @@ TRUNCATE TABLE	Albuns;
 --OPTUS DQL (EXERCICIOS QUE PROFESSORES PEDIRAM HOJE (31/01/2020) COMEÇO
 SELECT * FROM Albuns WHERE IdArtista = 2;											--selecionar os albuns do mesmo artista
 
+--USANDO INNER JOIN (JUNCAO DE DUAS OU MAIS TABELAS)
+SELECT Artista.Nome, Albuns.Nome FROM Artista INNER JOIN Albuns ON Artista.IdArtista = Albuns
+
 SELECT * FROM Albuns WHERE DataLancamento = '19/03/2020';							--Selecionar albuns lançados na mesma data
 
 SELECT IdArtista, Nome, IdEstilo FROM Albuns WHERE IdEstilo = '8';					--Selecionar os artistas do mesmo estilo musical
@@ -132,3 +135,27 @@ ORDER BY	DataLancamento ASC;
 
 --count
 SELECT COUNT (IdAlbum) FROM Albuns;
+
+--INNER JOIN
+SELECT * FROM Artista INNER JOIN Albuns ON Artista.IdArtista = Albuns.IdArtista WHERE DataLancamento = '2020-03-19';
+
+--SELECIONAR ALBUNS E ARTISTAS E ORDENAR POR DATA DE LANCAMENTO (ordem crescente)
+SELECT * FROM Albuns ORDER BY DataLancamento ASC;
+
+--COM JOIN
+SELECT Artista.Nome as NomeArtista, Albuns.Nome as NomeAlbum	-- atributo com apelodo
+FROM Artista 													-- 
+INNER JOIN Albuns ON Artista.IdArtista = Albuns.IdArtista
+ORDER BY DataLancamento ASC;
+
+--SELECIONAR ARTISTAS DO MESMO ESTILO MUSICAL
+SELECT IdArtista, IdEstilo FROM Albuns WHERE IdEstilo = 2;
+
+--DESAFIO REALIZAR O EXERCICIO COM INNER JOINCOM 3 TABELAS
+
+SELECT Albuns.IdArtista, Albuns.IdEstilo, Artista.Nome as Artista, Estilo.Nome as Estilo
+FROM Albuns
+INNER JOIN Artista	ON Artista.IdArtista = Albuns.IdArtista
+INNER JOIN Estilo	ON Estilo.IdEstilo = Albuns.IdEstilo
+WHERE Estilo.IdEstilo = '8';
+

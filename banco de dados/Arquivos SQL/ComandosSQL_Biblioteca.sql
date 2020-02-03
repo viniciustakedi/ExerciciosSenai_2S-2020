@@ -31,8 +31,7 @@ ALTER TABLE Generos
 ADD Descricao VARCHAR (255)
 
 --ALTERAR TIPO DE DADO
-ALTER TABLE Generos
-ALTER COLUMN Descricao CHAR(100);
+c
 
 --EXCLUIR, PARA EXCLUIR USA "DROP TABLE" para tabelas, "DROP COLUMN" para colunas, "DROP DATABASE "NOME" para o banco de dados.
 

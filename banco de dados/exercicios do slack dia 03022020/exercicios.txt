@@ -1,0 +1,12 @@
+Resolver os exercícios 1.2, 1.3, 1.5, 1.6, 1.7, 2.0, 2.1, 2.2 e 2.3
+Entregas:
+Scritps DDL, DML e DQL no formato
+NomeExercicio-01-DDL.sql
+NomeExercicio-02-DML.sql
+NomeExercicio-03-DQL.sql
+Exemplo: Optus-01-DDL.sql
+Reunir todos os exercícios em um arquivo .rar ou uma pasta zipada, no formato abaixo, e enviar neste canal do Slack
+sprint1-bd-SeuNome-Tarde.rar/zip
+
+
+https://github.com/senai-dev-1s2020
