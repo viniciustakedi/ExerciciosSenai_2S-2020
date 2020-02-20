@@ -48,7 +48,7 @@ namespace senai.Filmes.WebApi.Repositories
             }
         }
 
-        public GeneroDomain buscarPorId(int id)
+        public FilmeDomain buscarPorId(int id)
         {
             // Declara a conexão passando a string de conexão
             using (SqlConnection con = new SqlConnection(stringConexao))
@@ -94,7 +94,73 @@ namespace senai.Filmes.WebApi.Repositories
             }
         }
 
-        
+        public void Cadastrar(FilmeDomain filme)
+        {
+            using (SqlConnection con = new SqlConnection(stringConexao))
+            {
+                string queryInsert = "INSERT INTO Filmes(Titulo) VALUES (@Titulo)";
+
+
+                SqlCommand cmd = new SqlCommand(queryInsert, con);
+
+                cmd.Parameters.AddWithValue("@Titulo", filme.Nome);
+
+                con.Open();
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public void Deletar(int id)
+        {
+            using (SqlConnection con = new SqlConnection(stringConexao))
+            {
+                string queryDelete = "DELETE FROM Filmes WHERE IdFilme = @ID";
+
+                using (SqlCommand cmd = new SqlCommand(queryDelete, con))
+                {
+                    cmd.Parameters.AddWithValue("@ID",id);
+
+                    con.Open();
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+            public List<GeneroDomain> Listar()
+        {
+            List<FilmeDomain> filmes = new List<FilmeDomain>();
+
+            using (SqlConnection con = new SqlConnection(stringConexao))
+            {
+                string querySelectAll = "SELECT IdFilme, Nome from Filmes";
+
+                con.Open();
+
+                SqlDataReader rdr;
+
+                using (SqlCommand cmd = new SqlCommand(querySelectAll, con))
+                {
+                    rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+
+                        FilmeDomain filme = new FilmeDomain
+                        {
+                            IdFilme = Convert.ToInt32(rdr[0]),
+
+
+                            Titulo = rdr["Titulo"].ToString()
+                        };
+
+                        generos.Add(filme);
+                    }
+                }
+            }
+            return filmes;
+        }
     }
 }
 
